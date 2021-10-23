@@ -12,9 +12,12 @@
     "devDependencies": {
         "autoprefixer": "^10.3.7",
         "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
+        "laravel-mix": "^6.0.34",
         "lodash": "^4.17.19",
         "postcss": "^8.3.11",
-        "tailwindcss": "^2.2.17"
+        "tailwindcss": "^2.2.17",
+        "vue": "^2.6.14",
+        "vue-loader": "^15.9.8",
+        "vue-template-compiler": "^2.6.14"
     }
 }

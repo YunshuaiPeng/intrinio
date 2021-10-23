@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', \App\Http\Controllers\HomeController::class)->name('home');
+
+Route::get('/securities/{security}/historical-data', [\App\Http\Controllers\SecurityHistoricalDatumController::class, 'historicalData'])->name('SecurityHistoricalDatum.historicalData');

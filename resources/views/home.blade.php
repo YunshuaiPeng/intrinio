@@ -28,10 +28,11 @@
                             </div>
                             <div class="bg-gray-50 px-5 py-3 flex justify-between">
                                 <div class="text-xs font-medium text-gray-500 truncate inline-flex items-end">
-                                    {{ $security->historical_data_count }} close price records
+                                    {{ $security->historical_data_count }} historical data
                                 </div>
                                 <div class="text-sm inline-flex items-end">
-                                    <a href="#" class="font-medium text-blue-500 hover:text-blue-600">
+                                    <a href="{{ route('SecurityHistoricalDatum.historicalData',$security->id) }}"
+                                       class="font-medium text-blue-500 hover:text-blue-600">
                                         Chartify
                                         <span aria-hidden="true">→</span>
                                     </a>
