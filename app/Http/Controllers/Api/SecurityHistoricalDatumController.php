@@ -31,6 +31,7 @@ class SecurityHistoricalDatumController extends Controller
             ->historicalData()
             ->ofFrequency($frequency)
             ->betweenDate($startDate, $endDate)
+            ->orderBy('date', 'asc')
             ->get();
 
         return SecurityHistoricalDatumResource::collection($data);
