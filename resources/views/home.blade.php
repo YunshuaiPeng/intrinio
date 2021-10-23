@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="text-sm inline-flex items-end">
                                     <a href="#" class="font-medium text-blue-500 hover:text-blue-600">
-                                        View chart
+                                        Chartify
                                         <span aria-hidden="true">→</span>
                                     </a>
                                 </div>
