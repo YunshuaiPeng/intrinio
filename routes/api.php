@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('hello', function () {
+    return 'hello';
+});
+
+Route::get('securities', [\App\Http\Controllers\Api\SecurityController::class, 'index']);
+
+Route::get('securities/{security}/historical-data/{tag}', [\App\Http\Controllers\Api\SecurityHistoricalDatumController::class, 'index']);
