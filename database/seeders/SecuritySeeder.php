@@ -24,7 +24,7 @@ class SecuritySeeder extends Seeder
         $security->ticker = 'AAPL';
         $security->code = 'EQS';
         $security->currency = 'USD';
-        $security->logo = '/storage/security_logo/apple.png';
+        $security->logo = '/image/security_logo/apple.png';
         $security->save();
     }
 
@@ -38,7 +38,7 @@ class SecuritySeeder extends Seeder
         $security->ticker = 'INTC';
         $security->code = 'EQS';
         $security->currency = 'USD';
-        $security->logo = '/storage/security_logo/intel.png';
+        $security->logo = '/image/security_logo/intel.png';
         $security->save();
     }
 
@@ -52,7 +52,7 @@ class SecuritySeeder extends Seeder
         $security->ticker = 'MSFT';
         $security->code = 'EQS';
         $security->currency = 'USD';
-        $security->logo = '/storage/security_logo/microsoft.png';
+        $security->logo = '/image/security_logo/microsoft.png';
         $security->save();
     }
 }
