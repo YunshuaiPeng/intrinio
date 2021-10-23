@@ -11,7 +11,8 @@ class IntrinioServiceProvider extends ServiceProvider
     {
         $this->app->singleton('intrinio', function ($app) {
             return new IntrinioService(
-                config('intrinio.key'),
+                config('intrinio.api_key'),
+                config('intrinio.api_base_url'),
             );
         });
     }
