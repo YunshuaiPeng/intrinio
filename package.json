@@ -12,6 +12,7 @@
     "devDependencies": {
         "autoprefixer": "^10.3.7",
         "axios": "^0.21",
+        "chart.js": "^3.5.1",
         "laravel-mix": "^6.0.34",
         "lodash": "^4.17.19",
         "postcss": "^8.3.11",
