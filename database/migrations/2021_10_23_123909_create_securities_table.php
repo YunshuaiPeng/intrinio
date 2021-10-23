@@ -13,9 +13,10 @@ class CreateSecuritiesTable extends Migration
 
             $table->string('reference_id')->unique();
             $table->string('company_id')->unique();
-            $table->string('stock_exchange_id')->unique();
+            $table->string('stock_exchange_id');
             $table->string('name')->unique();
             $table->string('ticker')->unique();
+            $table->string('logo');
             $table->string('code');
             $table->string('currency');
 
