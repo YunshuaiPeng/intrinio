@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="w-96 h-56">
-            <canvas id="chart" width="200" height="200"></canvas>
+        <div class="w-3/4">
+            <canvas id="chart" width="100%"></canvas>
         </div>
     </div>
 </template>
@@ -10,50 +10,84 @@
 import Chart from 'chart.js/auto';
 
 export default {
+    props: {
+        security: {
+            type: Object,
+            required: true
+        }
+    },
+
+    data() {
+        return {
+            data: [],
+            tag: 'close_price',
+            frequency: 'daily',
+            startDate: '2017-06-01',
+            endDate: '2017-07-01',
+        }
+    },
+
+    computed: {
+        labels() {
+            return this.data.map(datum => datum.date)
+        },
+
+        closePrice() {
+            return this.data.map(datum => datum.value)
+        },
+    },
+
+
     mounted() {
-        let myChartElement = document.getElementById('chart');
+        this.fetchData().then(() => {
+            this.initialChart()
+        });
+    },
 
-        const data = {
-            labels: [1, 2, 3, 4, 5, 6, 7],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [65, 59, 80, 81, 56, 55, 40],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 159, 64)',
-                    'rgb(255, 205, 86)',
-                    'rgb(75, 192, 192)',
-                    'rgb(54, 162, 235)',
-                    'rgb(153, 102, 255)',
-                    'rgb(201, 203, 207)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+    methods: {
+        async fetchData() {
+            try {
+                let config = {
+                    params: {
+                        frequency: this.frequency,
+                        startDate: this.startDate,
+                        endDate: this.endDate,
                     }
-                }
-            },
-        };
+                };
 
-        // Draw the chart
-        let chartInstance = new Chart(myChartElement, config);
+                let url = `securities/${this.security.id}/historical-data/${this.tag}`
+
+                const {data} = await axios.get(url, config);
+
+                this.data = data;
+
+                return Promise.resolve()
+            } catch (e) {
+                console.log(e)
+            }
+        },
+
+        initialChart() {
+            let element = document.getElementById('chart');
+
+            let chartInstance = new Chart(element, this.chartConfig());
+        },
+
+        chartConfig() {
+            return {
+                type: 'line',
+                data: {
+                    labels: this.labels,
+                    datasets: [{
+                        label: 'Close Price',
+                        data: this.closePrice,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                    }]
+                },
+            };
+        },
     }
 }
 </script>

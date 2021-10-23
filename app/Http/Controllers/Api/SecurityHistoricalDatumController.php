@@ -19,13 +19,13 @@ class SecurityHistoricalDatumController extends Controller
                 'string',
                 Rule::in(SecurityHistoricalDatum::frequencies()),
             ],
-            'start_date' => 'required|date',
-            'end_date' => 'required|date',
+            'startDate' => 'required|date',
+            'endDate' => 'required|date',
         ]);
 
         $frequency = $request->input('frequency');
-        $startDate = $request->input('start_date');
-        $endDate = $request->input('end_date');
+        $startDate = $request->input('startDate');
+        $endDate = $request->input('endDate');
 
         $data = $security
             ->historicalData()
