@@ -66,9 +66,8 @@ const state = reactive({
     frequency: 'daily',
     startDate: '2017-06-01',
     endDate: '2017-07-01',
+    chartInstance: null
 });
-
-const chartInstance = reactive(null);
 
 const labels = computed(() => {
     return state.data.map(datum => datum.date)
