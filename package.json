@@ -10,6 +10,8 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@headlessui/vue": "^1.4.1",
+        "@heroicons/vue": "^1.0.5",
         "autoprefixer": "^10.3.7",
         "axios": "^0.21",
         "chart.js": "^3.5.1",
