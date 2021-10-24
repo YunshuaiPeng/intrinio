@@ -1,12 +1,12 @@
 <template>
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        <!--filters-->
+        <!--chart-->
         <div class="col-span-5 lg:col-span-4">
             <canvas id="chart" width="100%"></canvas>
         </div>
-        <!--filters end-->
+        <!--chart end-->
 
-        <!--chart-->
+        <!--filters-->
         <div class="col-span-5 lg:col-span-1">
             <div class="flex flex-col gap-4">
                 <div>
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <!--chart end-->
+        <!--filters end-->
     </div>
 </template>
 
