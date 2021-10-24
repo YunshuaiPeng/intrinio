@@ -120,7 +120,8 @@ const fetchData = async () => {
 
         return Promise.resolve(data);
     } catch (e) {
-        console.log(e);
+        alertError(e.response.data.errors)
+        console.log(e.response);
     }
 };
 
@@ -141,5 +142,13 @@ const handleApplyFilter = () => {
 const redrawChart = () => {
     state.chartInstance.destroy();
     state.chartInstance = newChartInstance();
+};
+
+const alertError = (errors) => {
+    let errorString = Object.entries(errors).map(([key, value]) => {
+        return value.join('\n');
+    }).join('\n');
+
+    alert(errorString);
 };
 </script>

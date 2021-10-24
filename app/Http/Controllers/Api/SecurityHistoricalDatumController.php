@@ -25,7 +25,7 @@ class SecurityHistoricalDatumController extends Controller
                 Rule::in(SecurityHistoricalDatum::tags()),
             ],
             'startDate' => 'required|date',
-            'endDate' => 'required|date',
+            'endDate' => 'required|date|after:startDate',
         ]);
 
         $frequency = $request->input('frequency');
