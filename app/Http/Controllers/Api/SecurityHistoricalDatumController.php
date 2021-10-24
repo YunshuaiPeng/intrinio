@@ -19,6 +19,11 @@ class SecurityHistoricalDatumController extends Controller
                 'string',
                 Rule::in(SecurityHistoricalDatum::frequencies()),
             ],
+            'tag' => [
+                'required',
+                'string',
+                Rule::in(SecurityHistoricalDatum::tags()),
+            ],
             'startDate' => 'required|date',
             'endDate' => 'required|date',
         ]);

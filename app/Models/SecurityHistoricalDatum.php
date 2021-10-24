@@ -15,6 +15,9 @@ class SecurityHistoricalDatum extends Model
     const FREQUENCY_QUARTERLY = 'quarterly';
     const FREQUENCY_YEARLY = 'yearly';
 
+    const TAG_CLOSE_PRICE = 'close_price';
+    const TAG_ADJ_CLOSE_PRICE = 'adj_close_price';
+
     protected $fillable = [
         'tag',
         'frequency',
@@ -22,14 +25,24 @@ class SecurityHistoricalDatum extends Model
         'value',
     ];
 
+    public static $frequencyDisplayPriority = [
+        self::FREQUENCY_DAILY,
+        self::FREQUENCY_WEEKLY,
+        self::FREQUENCY_MONTHLY,
+        self::FREQUENCY_QUARTERLY,
+        self::FREQUENCY_YEARLY,
+    ];
+
     public static function frequencies(): array
     {
+        return self::$frequencyDisplayPriority;
+    }
+
+    public static function tags(): array
+    {
         return [
-            self::FREQUENCY_DAILY,
-            self::FREQUENCY_WEEKLY,
-            self::FREQUENCY_MONTHLY,
-            self::FREQUENCY_QUARTERLY,
-            self::FREQUENCY_YEARLY,
+            self::TAG_CLOSE_PRICE,
+            self::TAG_ADJ_CLOSE_PRICE,
         ];
     }
 
@@ -56,12 +69,26 @@ class SecurityHistoricalDatum extends Model
         return $query->whereBetween('date', [$start, $end]);
     }
 
-    public static function tags(): array
+    public static function supportTags(): array
     {
         return self::query()
             ->distinct()
             ->get('tag')
             ->pluck('tag')
+            ->toArray();
+    }
+
+    public static function supportFrequencies(): array
+    {
+        return self::query()
+            ->distinct()
+            ->get('frequency')
+            ->sort(function ($first, $second) {
+                $firstIndex = array_search($first->frequency, self::$frequencyDisplayPriority);
+                $secondIndex = array_search($second->frequency, self::$frequencyDisplayPriority);
+                return $firstIndex - $secondIndex;
+            })
+            ->pluck('frequency')
             ->toArray();
     }
 }

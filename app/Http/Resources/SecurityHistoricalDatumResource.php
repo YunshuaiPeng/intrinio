@@ -14,7 +14,7 @@ class SecurityHistoricalDatumResource extends JsonResource
             'tag' => $this->tag,
             'frequency' => $this->frequency,
             'date' => $this->date,
-            'value' => $this->value,
+            'value' => round($this->value, 2),
         ];
     }
 }

@@ -12,7 +12,7 @@ class SecurityHistoricalDatumController extends Controller
     {
         return view('SecurityHistoricalDatum.historicalData', [
             'security' => $security,
-            'tags' => SecurityHistoricalDatum::tags(),
+            'frequencies' => SecurityHistoricalDatum::supportFrequencies(),
         ]);
     }
 }
