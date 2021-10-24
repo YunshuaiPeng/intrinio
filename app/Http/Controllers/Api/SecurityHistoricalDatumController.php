@@ -30,6 +30,7 @@ class SecurityHistoricalDatumController extends Controller
         $data = $security
             ->historicalData()
             ->ofFrequency($frequency)
+            ->ofTag($tag)
             ->betweenDate($startDate, $endDate)
             ->orderBy('date', 'asc')
             ->get();

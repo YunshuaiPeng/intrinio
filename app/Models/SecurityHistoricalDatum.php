@@ -38,6 +38,11 @@ class SecurityHistoricalDatum extends Model
         return $this->belongsTo(Security::class);
     }
 
+    public function scopeOfTag($query, string $tag): Builder
+    {
+        return $query->where('tag', $tag);
+    }
+
     public function scopeOfFrequency($query, string $frequency): Builder
     {
         return $query->where('frequency', $frequency);
@@ -49,5 +54,14 @@ class SecurityHistoricalDatum extends Model
         $end = Carbon::parse($end);
 
         return $query->whereBetween('date', [$start, $end]);
+    }
+
+    public static function tags(): array
+    {
+        return self::query()
+            ->distinct()
+            ->get('tag')
+            ->pluck('tag')
+            ->toArray();
     }
 }

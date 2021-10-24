@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <div class="w-3/4">
-            <canvas id="chart" width="100%"></canvas>
-        </div>
+    <div class="w-3/4">
+        <canvas id="chart" width="100%"></canvas>
     </div>
 </template>
 
@@ -14,7 +12,11 @@ export default {
         security: {
             type: Object,
             required: true
-        }
+        },
+        tags: {
+            type: Array,
+            required: true
+        },
     },
 
     data() {
@@ -36,7 +38,6 @@ export default {
             return this.data.map(datum => datum.value)
         },
     },
-
 
     mounted() {
         this.fetchData().then(() => {
