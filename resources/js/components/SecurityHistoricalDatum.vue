@@ -99,8 +99,8 @@ const chartConfig = computed(() => {
 
 onMounted(() => {
     fetchData().then(() => {
-        initialChart()
-    })
+        initialChart();
+    });
 })
 
 const fetchData = async () => {
@@ -118,9 +118,9 @@ const fetchData = async () => {
 
         state.data = data;
 
-        return Promise.resolve(data)
+        return Promise.resolve(data);
     } catch (e) {
-        console.log(e)
+        console.log(e);
     }
 };
 
@@ -134,12 +134,12 @@ const newChartInstance = () => {
 
 const handleApplyFilter = () => {
     fetchData().then(() => {
-        redrawChart()
-    })
+        redrawChart();
+    });
 };
 
 const redrawChart = () => {
-    state.chartInstance.destroy()
+    state.chartInstance.destroy();
     state.chartInstance = newChartInstance();
 };
 </script>
