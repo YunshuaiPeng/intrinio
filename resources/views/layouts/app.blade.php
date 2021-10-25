@@ -28,12 +28,10 @@
         </div>
     </nav>
 
-    <main>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="px-4 sm:px-6 lg:px-8">
-                    {{ $slot }}
-                </div>
+    <main class="py-4 sm:py-10 lg:px-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="px-4 sm:px-6 lg:px-8">
+                {{ $slot }}
             </div>
         </div>
     </main>
