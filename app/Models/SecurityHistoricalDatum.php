@@ -63,9 +63,6 @@ class SecurityHistoricalDatum extends Model
 
     public function scopeBetweenDate($query, string $start, string $end): Builder
     {
-        $start = Carbon::parse($start);
-        $end = Carbon::parse($end);
-
         return $query->whereBetween('date', [$start, $end]);
     }
 
