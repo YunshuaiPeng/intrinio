@@ -9,7 +9,13 @@ window._ = require('lodash');
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api/`;
+
+if (process.env.NODE_ENV == 'production') {
+    window.axios.defaults.baseURL = `${process.env.MIX_PRODUCTION_APP_URL}/api/`;
+} else {
+    window.axios.defaults.baseURL = `${process.env.MIX_LOCAL_APP_URL}/api/`;
+}
+console.log(window.axios.defaults)
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
