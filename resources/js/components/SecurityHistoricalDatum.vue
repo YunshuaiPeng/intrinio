@@ -1,14 +1,9 @@
 <template>
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        <!--chart-->
-        <div class="col-span-5 lg:col-span-4">
-            <canvas id="chart" width="100%"></canvas>
-        </div>
-        <!--chart end-->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
         <!--filters-->
-        <div class="col-span-5 lg:col-span-1">
-            <div class="flex flex-col gap-4">
+        <div class="col-span-4 lg:col-span-1">
+            <div class="flex flex-col gap-4 bg-white rounded-lg p-4 pr-6">
                 <div>
                     <h2 class="text-gray-500 text-base font-medium uppercase tracking-wide">Frequency</h2>
                     <select class="px-4 py-3 rounded w-full"
@@ -42,6 +37,15 @@
             </div>
         </div>
         <!--filters end-->
+
+        <!--chart-->
+        <div class="col-span-4 lg:col-span-3">
+            <div class="bg-white rounded-lg p-4 pr-6">
+                <canvas id="chart" width="100%"></canvas>
+            </div>
+        </div>
+        <!--chart end-->
+
     </div>
 </template>
 

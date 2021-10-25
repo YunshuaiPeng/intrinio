@@ -1,24 +1,9 @@
 <x-app-layout>
-    <div class="flex flex-col gap-y-12">
-        <div class="max-w-full lg:max-w-sm bg-white overflow-hidden shadow rounded-lg p-5">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <img class="h-10 w-10 rounded" src="{{ asset($security->logo) }}"
-                         alt="{{ $security->name }}">
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                    <dl>
-                        <dt>
-                            <div class="text-lg font-medium text-gray-900">
-                                {{ $security->name }}
-                            </div>
-                        </dt>
-                        <dd class="text-xs font-medium text-gray-500 truncate">
-                            {{ $security->ticker }} / {{ $security->currency }}
-                        </dd>
-                    </dl>
-                </div>
-            </div>
+    <div class="flex flex-col gap-y-4">
+        <div class="flex items-center gap-2">
+            <img class="h-6 w-6 rounded" src="{{ asset($security->logo) }}"
+                 alt="{{ $security->name }}">
+            <h2 class="text-gray-500 text-base font-medium uppercase tracking-wide">{{ $security->name }}</h2>
         </div>
 
         <security-historical-datum
