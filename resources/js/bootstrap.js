@@ -15,7 +15,6 @@ if (process.env.NODE_ENV == 'production') {
 } else {
     window.axios.defaults.baseURL = `${process.env.MIX_LOCAL_APP_URL}/api/`;
 }
-console.log(window.axios.defaults)
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
